@@ -49,7 +49,7 @@ Known Issues
 
 Support thread
 ==============
-http://www.zen-cart.com/showthread.php?213966-Missing-Image-Scanner-for-Zen-Cart-Support-Thread
+http://www.zen-cart.com/showthread.php?213966
 
 GitHub
 ======

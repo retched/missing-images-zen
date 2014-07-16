@@ -17,7 +17,7 @@
 ****************************************************************************
 Features
 ========
-Scans your database and images folder for any missing images and reports on them.
+Scans your ZenCart database and images folder for any missing images and reports on them.
 
 Version Date
 ==============

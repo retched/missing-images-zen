@@ -15,15 +15,13 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ****************************************************************************
-
 Features
 ========
-Scans your ZenCart database and images folder for any missing images and reports on them.
+Scans your database and images folder for any missing images and reports on them.
 
 Version Date
 ==============
-v1.0 2014-07-16 16:33
-  * Initial release
+v1.0 2014-07-16 02:37	Initial release
 
 Author
 ======
@@ -69,15 +67,15 @@ proceeding.
 Install
 =======
   0. Backup your database.
-  1. Unzip and edit /missing_images.php under the area "Configuration Variables". Be careful 
-     of ANY quotation marks. The quotation marks MUST stay. Be sure to read the
-     notes under each $variable.
+  1. Unzip and edit /missing_images.php under the area "Configuration Variables". 
+     Be careful of ANY quotation marks. The quotation marks MUST stay. Be sure 
+     to read the notes under each $variable.
   2. Save the edits.
-  3. Upload your modified /missing_images.php to your store directory. (It does not have to
-     be in the root of the store directory but it does have to be on the same server as
-     it.)
+  3. Upload your modified /missing_images.php to your store directory. (It 
+     does not have to be in the root of the store directory but it does 
+     have to be on the same server as it.)
   4. Run the script via web browser.
 
 Un-Install
 ==========
-  1. Delete all files that were copied from the installation package.
+1. Delete all files that were copied from the installation package.

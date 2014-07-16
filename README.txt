@@ -22,7 +22,7 @@ Scans your ZenCart database and images folder for any missing images and reports
 
 Version Date
 ==============
-v1.0 2014-07-16 16:11
+v1.0 2014-07-16 16:33
   * Initial release
 
 Author

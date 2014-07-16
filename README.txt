@@ -69,11 +69,13 @@ proceeding.
 Install
 =======
   0. Backup your database.
-  1. Unzip and upload all files to your store directory.
-  2. Edit /missing_images.php under the area "Configuration Variables". Be careful 
+  1. Unzip and edit /missing_images.php under the area "Configuration Variables". Be careful 
      of ANY quotation marks. The quotation marks MUST stay. Be sure to read the
      notes under each $variable.
-  3. Save the edits.
+  2. Save the edits.
+  3. Upload your modified /missing_images.php to your store directory. (It does not have to
+     be in the root of the store directory but it does have to be on the same server as
+     it.)
   4. Run the script via web browser.
 
 Un-Install

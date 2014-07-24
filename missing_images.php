@@ -1,11 +1,7 @@
 <?php 
 /**
  * Missing Images Checker for ZenCart
-<<<<<<< HEAD
  * Version 1.0.2
-=======
- * Version 1.0.1
->>>>>>> origin/master
  * By Paul Williams (retched) 
  * @copyright Portions Copyright 2004-2006 Zen Cart Team
 ****************************************************************************
@@ -413,11 +409,7 @@ body {
 </style>
 </head>
 <body>
-<<<<<<< HEAD
 <p class="centeredText"><span class="documentHeadline">Missing Image Checker for ZenCart v1.0.2</span></p>
-=======
-<p class="centeredText"><span class="documentHeadline">Missing Image Checker for ZenCart v1.0.1</span></p>
->>>>>>> origin/master
 <?php if (sizeof($products_info) > 0) { ?>
 <table class="resultsTable" >
   <tr class="headingRow">

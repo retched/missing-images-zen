@@ -22,6 +22,18 @@ on them.
 
 Version Date
 ==============
+v1.0.2	2014-07-24 13:50
+  * Removed the choice of running the script as MySQLi or MySQL. The script 
+    will now check if it can run mysqli_connect. If not, it will run 
+    mysql_connect. If that fails, the script will not run. The user also
+    has the option to force MySQL although this should NOT really be used. I
+    will still reserve the right to remove this option at a later time once
+    MySQL is removed from PHP.
+  * Consolidated the location of the query that is being run by the script to
+    one location. (There is no difference in SQL language between MySQL and 
+    MySQLi. So having two seperate queries which produced the same result table
+    was a bit redundant.)
+
 v1.0.1	2014-07-24 12:58
   * Improved call for database_tables.php as suggested by lat9. 
     Thanks for the code suggestion.
@@ -48,9 +60,9 @@ Known Issues
     * People on shared servers or those without the ability to turn Safe Mode off
       will experience more time outs on larger databases. This is because I 
       cannot force the script to essentially reset the execution_timer. This will
-      be worked on in a later version. You can try to edit the script on line 121 
-      or line 145 and change the SQL query a little bit. If you do, you may end 
-      up having to run this script a couple of times.
+      be worked on in a later version. You can try to edit the script on line 118 
+      and change the SQL query a little bit. If you do, you may end up having 
+      to run this script a couple of times.
 
 Support thread
 ==============

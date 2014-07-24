@@ -1,7 +1,7 @@
 <?php 
 /**
  * Missing Images Checker for ZenCart
- * Version 1.0
+ * Version 1.0.2
  * By Paul Williams (retched) 
  * @copyright Portions Copyright 2004-2006 Zen Cart Team
 ****************************************************************************
@@ -48,7 +48,7 @@
 // V A R I A B L E S
 ///////////////////////////////////////////////////
 
-$path_to_zen_cart_configure_php = '../../zencart/includes/'; 
+$path_to_zen_cart_configure_php = './includes/'; 
     // Enter the full path information to the /catalog/includes/configure.php
     // of your ZenCart installation. 
     //
@@ -61,12 +61,17 @@ $path_to_zen_cart_configure_php = '../../zencart/includes/';
     // **DO NOT** include configure.php or ANY filename at the end of this
     // variable. This is being done by the script.
 
-$db_connection_type = 'mysqli'; 
-    // You REALLY shouldn't need to change this unless you're working with an 
-    // older PHP or your host didn't enable MySQLi for you. Valid choices are
-    // mysqli or mysql. MySQL functions will be obsolete soon as they are 
-    // deprecated in php 5.5.0 and will be removed soon. This choice will
-	// likely be removed in a future update.
+	// I removed the prompt to see if you want to use MySQL or MySQLi as you 
+	// REALLY should be using MySQLi connections instead of MySQL. The script 
+	// will now check to see if it can run mysql or mysqli. MySQL functions 
+	// will be obsolete soon as they are deprecated in php 5.5.0 and will be 
+	// removed soon. This option will likely be removed in a future update 
+	// when MySQL is no longer available by default with PHP. If for some 
+	// reason you REALLY need to use MySQL instead of MySQLi even though 
+	// MySQLi is available, you can uncomment the line below (delete the // in
+	// front and save) to force the script to run MySQL instead of MySQLi.
+	//
+	// $force_mysql = true;
 
 $zen_language_id = '1';
     // This can be left at 1. This is only really used for displaying the 
@@ -107,7 +112,12 @@ $products_info = array();
 //
 // Establish Database Connection and retrieve information
 //
-if (strtolower($db_connection_type) == 'mysqli') {
+
+// The query to select the necessary fields. ONLY EDIT THIS IF YOU NEED TO RUN 
+// SHORTER QUERIES!
+$products_query = "SELECT p.products_id, p.products_image, pd.products_name FROM " . TABLE_PRODUCTS . " p LEFT JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd ON p.products_id = pd.products_id WHERE pd.language_id = " . (int)$zen_language_id;
+
+if (function_exists('mysqli_connect') && ($force_mysql !== true) ) {
 
     // establish database connection
     $db = mysqli_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE) or die ("Cannot connect to database. MySQL returned this error. <br />" . mysqli_error($db));
@@ -118,9 +128,9 @@ if (strtolower($db_connection_type) == 'mysqli') {
     // stored in TABLE_PRODUCTS. The product names are stored in the 
     // TABLE_PRODUCTS_DESCRIPTION table. So a LEFT JOIN will be used.
 
-    $products_query = "SELECT p.products_id, p.products_image, pd.products_name FROM " . TABLE_PRODUCTS . " p LEFT JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd ON p.products_id = pd.products_id WHERE pd.language_id = " . (int)$zen_language_id or die("Cannot execute query. MySQL returned this error.<br />" . mysqli_error($db));
-
-    $products_result = $db->query($products_query);
+    if (!($products_result = mysqli_query($db, $products_query))) {
+		die("Cannot execute query. MySQL returned this error.<br />" . mysqli_error($db));
+	}
     
     while($row = mysqli_fetch_array($products_result)) {
         $products_info[] = array("id" => $row[0], "image" => $row[1], "name" => $row[2]);
@@ -128,8 +138,7 @@ if (strtolower($db_connection_type) == 'mysqli') {
 
     mysqli_close($db);
 
-} else if (strtolower($db_connection_type) == 'mysql') {
-
+} else if (function_exists('mysql_connect') || ($force_mysql === true) ) {
     // establish database connection
     $db = mysql_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD) or die ("Cannot connect to database. MySQL returned this error. <br />" . mysql_error($db));
    
@@ -142,7 +151,7 @@ if (strtolower($db_connection_type) == 'mysqli') {
     // stored in TABLE_PRODUCTS. The product names are stored in the 
     // TABLE_PRODUCTS_DESCRIPTION table. So a LEFT JOIN will be used.
 
-    $products_result = mysql_query("SELECT p.products_id, p.products_image, pd.products_name FROM " . TABLE_PRODUCTS . " p LEFT JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd ON p.products_id = pd.products_id WHERE pd.language_id = " . (int)$zen_language_id ) or die("Cannot execute query. MySQL returned this error.<br />" . mysql_error($db));
+    $products_result = mysql_query($products_query) or die("Cannot execute query. MySQL returned this error.<br />" . mysql_error($db));
 
     while($row = mysql_fetch_array($products_result)) {
         $products_info[] = array("id" => $row[0], "image" => $row[1], "name" => $row[2]);
@@ -151,7 +160,7 @@ if (strtolower($db_connection_type) == 'mysqli') {
     mysql_close($db);
 } else { // We're only using MySQL or MySQLi, no other databases can be used.
 
-    die("<b>Invalid value for \$db_connection_type. Please choose from mysql or mysqli.</b> No other database types are accepted.");
+    die("<b>Invalid Database Detected!</b> Only MySQL and MySQLi databases are supported at this time.");
 
 }
 
@@ -400,7 +409,7 @@ body {
 </style>
 </head>
 <body>
-<p class="centeredText"><span class="documentHeadline">Missing Image Checker for ZenCart v1.0</span></p>
+<p class="centeredText"><span class="documentHeadline">Missing Image Checker for ZenCart v1.0.2</span></p>
 <?php if (sizeof($products_info) > 0) { ?>
 <table class="resultsTable" >
   <tr class="headingRow">

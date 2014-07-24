@@ -22,7 +22,11 @@ on them.
 
 Version Date
 ==============
-v1.0 2014-07-16 02:37
+v1.0.1	2014-07-24 12:58
+  * Improved call for database_tables.php as suggested by lat9. 
+    Thanks for the code suggestion.
+
+v1.0	2014-07-16 02:37
   * Initial release
 
 Author
@@ -32,11 +36,12 @@ Paul Williams (retched@iwle.com)
 Description
 ===========
 This script will run through your ZenCart database, provided by you in the
-connection information of the script, and then retrieve all images from products 
-table of ZenCart. Then, the script will run through each of those images making 
-sure that the image exists and is saved in the correct format. (For example, a 
-.gif is actually a GIF.) This is useful if you use a batch product uploader like 
-easyPopulate and you don't know which of your images are missing.
+connection information of the script, and then retrieve all images from the 
+products table of ZenCart. Then, the script will run through each of those 
+images making sure that the image exists and is saved in the correct format. 
+(For example, a .gif is actually a GIF.) This is useful if you use a batch 
+product uploader like easyPopulate and you don't know which of your images 
+are missing.
 
 Known Issues
 ============

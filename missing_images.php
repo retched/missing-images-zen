@@ -99,7 +99,7 @@ $i = 0;
 require_once($path_to_zen_cart_configure_php . "configure.php");
 
 // Load the definition file for the database table names. 
-require_once($path_to_zen_cart_configure_php . "database_tables.php");
+require_once(DIR_FS_CATALOG . "includes/database_tables.php");  //-20140724-lat9-Use configure.php setting, enables using /includes/local/configure.php
 
 // Our main variable where the database information will be stored.
 $products_info = array();

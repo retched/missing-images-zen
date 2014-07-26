@@ -1,0 +1,128 @@
+      @media screen {
+        .documentHeadline {
+          text-align: center;
+          font-size: 36px;
+          font-weight: bold;
+        }
+        .centeredText {
+          text-align: center;
+        }
+        body {
+          background: #E1E1E1;
+          font-family: arial, helvetica, sans-serif !important;
+          font-size: 13px !important;
+          color: #242424;
+          line-height: 2.3em !important;
+        }
+
+        .resultsTable {
+          width: 80%;
+          margin: auto;
+          border-collapse: collapse;
+          line-height: 1.7em;
+        }
+        .rowEven {
+          background: #FFFFFF;
+        }
+
+        .rowEven:hover {
+          background: #DADADA;
+        }
+
+        .rowOdd {
+          background: #EFEFEF;
+        }
+        .rowOdd:hover {
+          background: #D2D2D2;
+        }
+        .headingRow {
+          text-align: center;
+          font-weight: bold;
+          color: #FFFFFF;
+          background: #000000;
+        }
+        .mismatch, .caution {
+          background: yellow !important;
+          font-style: italic;
+        }
+        .redAlert {
+          color: #FF0000 !important;
+          font-weight: bold;
+        }
+        .OK {
+          padding: 0 0 0 50px;
+          color: #009900 !important;
+          font-weight: bold;
+        }
+
+        .productIDcolumn { width: 5%; }
+        .productNamecolumn { width: 20%; }
+        .productFilecolumn { width: 40%; }
+        .productResultcolumn { width:35%; }
+      }
+
+      @media print  {
+        .documentHeadline {
+          text-align: center;
+          font-size: 36px;
+          font-weight: bold;
+        }
+        .centeredText {
+          text-align: center;
+        }
+        body {
+          font-family: arial, helvetica, sans-serif !important;
+          font-size: 13px !important;
+          color: #000000;
+          line-height: 2.3em !important;
+        }
+
+        .resultsTable {
+          width: 600px;
+          margin: auto;
+          border-collapse: collapse;
+          line-height: 1.7em;
+          table-layout:fixed;
+        }
+        .resultsTable td {
+          word-wrap: break-word;
+        }
+        .rowEven {
+          background: #FFFFFF;
+        }
+
+        .rowEven:hover {
+          background: #DADADA;
+        }
+
+        .rowOdd {
+          background: #EFEFEF;
+        }
+        .rowOdd:hover {
+          background: #D2D2D2;
+        }
+        .headingRow {
+          text-align: center;
+          font-weight: bold;
+          color: #FFFFFF;
+          background: #000000;
+        }
+        .mismatch, .caution {
+          background: yellow !important;
+          font-style: italic;
+        }
+        .redAlert {
+          color: #FF0000 !important;
+          font-weight: bold;
+        }
+        .OK {
+          padding: 0 0 0 50px;
+          color: #009900 !important;
+          font-weight: bold;
+        }
+
+        .productIDcolumn { width: 5%; }
+        .productNamecolumn { width: 20%; }
+        .productFilecolumn { width: 40%; }
+        .productResultcolumn { width:35%; }
+      }

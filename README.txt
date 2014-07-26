@@ -4,7 +4,7 @@
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
+    the Free Software Foundation, either version 2 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -22,6 +22,24 @@ on them.
 
 Version Date
 ==============
+v2.0    ** NOT YET **
+  * Thanks to Zen4All and their changes, this coding is being reworked and moved
+    from being a standalone script to a full-fledged admin panel module. This
+    means that there will be a full documentation page (not too complex) and
+    the inclusion of installation SQL scripts for adding the menu option
+    to the admin menu (likely under 'tools').
+  * In addition, since it is being directly incorporated with ZenCart, this
+    coding is being re-licensed under GPLv2.
+    
+    TODO:
+  * Remove all hard coded *anything* from the actual module code and move 
+    the texts to define files for the module.
+  * Work on "action buttons" to either remove the image from the database and/or
+    delete the actual image file from the store.
+  * Instead of just going through one LARGE scan of the database, possibly look
+    into separating and searching by category instead.
+  * Anything as needed.
+    
 v1.0.2	2014-07-24 13:50
   * Removed the choice of running the script as MySQLi or MySQL. The script 
     will now check if it can run mysqli_connect. If not, it will run 
@@ -74,11 +92,11 @@ https://github.com/retched/missing-images-zen
 
 Affected files
 ==============
-None (images are NOT modified)
+None
 
 Affects DB
 ==========
-None (database is NOT modified)
+None
 
 DISCLAIMER
 ==========
@@ -87,7 +105,7 @@ While there are no changes made to your database or files, it is still suggested
 to backup your ZenCart database and any and all applicable files before 
 proceeding.
 
-Install
+Install (Needs to be rewritten)
 =======
   0. Backup your database.
   1. Unzip and edit /missing_images.php under the area "Configuration Variables". 
@@ -99,6 +117,6 @@ Install
      have to be on the same server as it.)
   4. Run the script via web browser.
 
-Un-Install
+Un-Install (Needs to be rewritten)
 ==========
 1. Delete all files that were copied from the installation package.
